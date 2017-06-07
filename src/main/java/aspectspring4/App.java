@@ -12,8 +12,19 @@ public class App
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
         Camera camera = (Camera)context.getBean("camera");
+        Lens lens = (Lens) context.getBean("lens");
 
         camera.snap();
+
+        camera.snap(1000);
+
+        camera.snap("The castle");
+
+        camera.snapNighttime();
+
+
+        lens.zoom(5);
+
 
         context.close();
     }
