@@ -1,5 +1,6 @@
 package aspectspring4;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -12,6 +13,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component("logger")
 public class Logger {
+
+
+    /*
+
+
+    Video 80 on spring tutorial
 
     @Pointcut("execution(void aspectspring4.Camera.*(..))")
     public void cameraSnap() {
@@ -44,6 +51,23 @@ public class Logger {
         System.out.println("Doing something with cameras..");
     }
 
+*/
+
+
+    @Pointcut("execution(*  aspectspring4.Camera.snap(..))")
+    public void cameraSnap() {
+        // * for any return,method or class .. for any arg
+    }
+
+    @Before("cameraSnap()")
+    public void beforeAdvice() {
+        System.out.println("Before advice...");
+    }
+
+    @After("cameraSnap()")
+    public void afterAdvice() {
+        System.out.println("After advice...");
+    }
 
 
 }
